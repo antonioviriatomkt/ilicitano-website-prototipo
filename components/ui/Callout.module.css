@@ -1,0 +1,17 @@
+.callout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 68ch;
+  padding: var(--space-6) var(--space-7);
+  background: var(--paper-2);
+  border: var(--border);
+}
+
+.label {
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink);
+}
