@@ -10,6 +10,7 @@ import { Field } from "@/components/ui/Field";
 import { Frame } from "@/components/ui/Frame";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { Pending } from "@/components/ui/Pending";
 import { TextLink } from "@/components/ui/TextLink";
 import { company, completed, kourosII } from "@/lib/content";
 import styles from "./page.module.css";
@@ -33,10 +34,7 @@ export default function KourosIIPage() {
     <>
       <section className={`page ${styles.top}`}>
         <Breadcrumb
-          trail={[
-            { label: "Empreendimentos", href: "/empreendimentos" },
-            { label: kourosII.name },
-          ]}
+          trail={[{ label: "Empreendimentos", href: "/empreendimentos" }, { label: kourosII.name }]}
         />
 
         <Reveal className={`grid ${styles.masthead}`}>
@@ -72,7 +70,7 @@ export default function KourosIIPage() {
 
         <div className={styles.galleryMeta}>
           <span className="small muted">{kourosII.galleryCaption}</span>
-          <TextLink href="/empreendimentos/kouros-ii/galeria">Ver galeria e plantas</TextLink>
+          <Pending>Galeria e plantas</Pending>
         </div>
       </section>
 
@@ -103,9 +101,7 @@ export default function KourosIIPage() {
                   Escolha a sua fração <em>em planta.</em>
                 </h2>
               </div>
-              <TextLink href="/empreendimentos/kouros-ii/brochura">
-                Descarregar brochura
-              </TextLink>
+              <Pending>Brochura</Pending>
             </div>
 
             {/* A real table: these are four related columns of data, and a
@@ -134,9 +130,7 @@ export default function KourosIIPage() {
                     <td data-label="Piso">{unit.floor}</td>
                     <td data-label="Preço desde">{unit.price}</td>
                     <td className={styles.planCell}>
-                      <TextLink href="/empreendimentos/kouros-ii/plantas">
-                        Planta<span className="sr-only"> do {unit.typology}</span>
-                      </TextLink>
+                      <span className={styles.planPending}>[planta]</span>
                     </td>
                   </tr>
                 ))}
@@ -188,12 +182,7 @@ export default function KourosIIPage() {
             <form className={styles.form}>
               <Field label="Nome" name="visita-nome" placeholder="O seu nome" />
               <Field label="Telemóvel" name="visita-telemovel" type="tel" placeholder="+351" />
-              <Field
-                label="E-mail"
-                name="visita-email"
-                type="email"
-                placeholder="nome@email.pt"
-              />
+              <Field label="E-mail" name="visita-email" type="email" placeholder="nome@email.pt" />
               <ChoiceChips
                 label="Tipologia de interesse"
                 name="tipologia"

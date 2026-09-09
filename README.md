@@ -3,8 +3,21 @@
 Protótipo do novo site da ILICITANO (promoção imobiliária, engenharia e construção, Leiria),
 construído a partir da proposta de linguagem visual desenhada em Claude Design.
 
-- **Home** — `/`
-- **Linguagem visual** (tokens, tipografia, componentes, movimento) — `/sistema`
+### Rotas
+
+| Rota | O que é |
+| --- | --- |
+| `/` | Home |
+| `/empreendimentos` | Índice — o que está à venda e o que foi entregue |
+| `/empreendimentos/kouros-ii` | Ficha do empreendimento em comercialização |
+| `/empreendimentos/[slug]` | Ficha de um empreendimento concluído (6) |
+| `/construcao-remodelacao` | Construção e remodelação para particulares |
+| `/quem-somos` | A empresa |
+| `/contactos` | Contactos e formulário |
+| `/marcar-visita` | Marcação de visita |
+| `/orcamento` | Pedido de orçamento |
+| `/aviso-legal`, `/termos-e-condicoes`, `/politica-de-privacidade`, `/gestao-de-cookies` | Documentos legais — esqueletos por preencher |
+| `/sistema` | Linguagem visual: tokens, tipografia, componentes, movimento |
 
 ```bash
 npm install
@@ -23,18 +36,21 @@ duas famílias localmente, `next/image` trata da fotografia.
 app/
   layout.tsx          cabeçalho, rodapé, tipos de letra, metadados
   page.tsx            home — compõe as seis secções, sem lógica própria
-  sistema/            página viva da linguagem visual
+  <rota>/             uma pasta por rota; conteúdo próprio em content.ts
 styles/
   tokens.css          ← fonte de verdade da linguagem visual
   base.css            reset, defaults, prefers-reduced-motion
   primitives.css      classes de tipo e grelha partilhadas
 components/
   brand/              monograma e logótipo
-  ui/                 Button, TextLink, Chip, Fact, Frame, SectionHeading
-  layout/             Header (menu, condensação no scroll), Footer
+  ui/                 Button, TextLink, Chip, Fact, Frame, SectionHeading,
+                      PageIntro, Breadcrumb, Prose, Callout, Placeholder,
+                      Pending, ProjectCard, Field, ChoiceChips, Checkbox
+  layout/             Header, Footer, LegalPage
   motion/             Reveal — entrada ao entrar no ecrã
-  sections/           Hero, Facts, Featured, Portfolio, Services, About
-lib/content.ts        todo o copy e os dados, fora dos componentes
+  sections/           Hero, Facts, Featured, Portfolio, Services, About,
+                      QuoteBand
+lib/content.ts        dados e copy globais, fora dos componentes
 public/fotografia/    fotografia da ILICITANO
 ```
 
@@ -79,11 +95,29 @@ Todo o copy vive em `lib/content.ts`. Os valores entre **[parêntesis retos]** �
 data de conclusão — são os que só a ILICITANO tem, e estão deixados como marcadores visíveis em
 vez de inventados.
 
+## Formulários
+
+Nenhum formulário envia nada. Não têm `action`, o botão principal é `type="button"`, e o copy não
+promete que a mensagem seguiu. Ligar isto a um destinatário é uma decisão da build a sério.
+
+O texto de consentimento de RGPD está por redigir e aparece como marcador, ligado à política de
+privacidade.
+
+## Verificação
+
+`npm run build`, `npx tsc --noEmit` e `npx eslint .` têm de passar. Além disso, as 16 rotas foram
+verificadas a 390, 768 e 1440 px: estado HTTP correto, sem scroll horizontal, um só `<h1>` por
+página, nenhuma imagem sem `alt`, nenhuma revelação presa a opacidade 0 e zero erros de consola.
+O grafo de ligações internas não tem ligações mortas.
+
 ## Estado
 
-Feito: home (desktop e telemóvel) e a página da linguagem visual.
+Todas as rotas do protótipo estão construídas. O que falta é do cliente, não do código:
 
-Por fazer: as ligações do cabeçalho, do rodapé e dos cartões apontam para rotas que ainda não
-existem. As próximas páginas já estão desenhadas na mesma prancha do Claude Design —
-`Kouros II — empreendimento` e `Construção & Remodelação`. O seletor de idioma é decorativo: o
-protótipo é só PT.
+- Os **valores entre [parêntesis retos]** — preços, áreas, frações, datas, dimensão da equipa,
+  âmbito do alvará.
+- As **imagens marcadas com `Placeholder`** — renders do Kouros II, plantas, mapas, fotografia da
+  equipa.
+- Os **quatro documentos legais**, que são esqueletos e dizem-no na própria página. Têm de ser
+  redigidos por assessoria jurídica antes de qualquer publicação.
+- O **seletor de idioma é decorativo**: o protótipo é só PT.

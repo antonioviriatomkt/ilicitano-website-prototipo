@@ -1,0 +1,115 @@
+/* --- the one development on the market ---------------------------------- */
+
+/* Given more room than a card in the grid below: it is the only thing on the
+ * site that is actually for sale, so it gets the full page width and the
+ * gold chip, and everything else on the page reads as record. */
+.featured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-top: var(--space-section);
+}
+
+.featuredHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-8);
+}
+
+.featuredTitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.featuredBody {
+  align-items: end;
+}
+
+.featuredCopy {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.featuredIntro {
+  max-width: 46ch;
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.featuredActions {
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding-block: var(--space-8);
+}
+
+/* --- delivered work ----------------------------------------------------- */
+
+.delivered {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-14);
+  padding-block: var(--space-section) var(--space-section);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-8) var(--grid-gap);
+  width: 100%;
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .featuredHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  /* A 16/7 band is a desktop proportion; on a phone it collapses to a strip
+   * too shallow to read as a photograph of a building. */
+  .featuredMedia > :first-child {
+    aspect-ratio: 3 / 2 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .specs {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

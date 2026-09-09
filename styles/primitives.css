@@ -112,6 +112,17 @@
   color: var(--ink-3);
 }
 
+/* Uppercase micro-label: a <dt>, a column head, the name of a group of
+ * facts. Same setting as .eyebrow but in --ink-3 rather than gold, because
+ * gold on this site means "em comercialização" and nothing else. */
+.label {
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
 /* Uppercase micro-label — the metadata that sits opposite a card title. */
 .meta {
   font-size: var(--size-label);

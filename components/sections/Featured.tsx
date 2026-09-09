@@ -73,7 +73,9 @@ export function Featured() {
             <Button href="/marcar-visita" block arrow>
               Marcar visita à obra
             </Button>
-            <TextLink href={`/empreendimentos/${kourosII.slug}`}>Ver ficha do empreendimento</TextLink>
+            <TextLink href={`/empreendimentos/${kourosII.slug}`}>
+              Ver ficha do empreendimento
+            </TextLink>
           </div>
         </Reveal>
       </div>

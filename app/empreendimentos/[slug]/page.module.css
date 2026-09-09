@@ -1,0 +1,180 @@
+/* --- masthead ----------------------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-top: var(--space-10);
+}
+
+.masthead {
+  align-items: end;
+}
+
+.identity {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+/* Deliberately one step under the Kouros II title: that page is a shop
+ * window, this one is a record of work already delivered. */
+.title {
+  max-width: 16ch;
+}
+
+.intro {
+  max-width: 46ch;
+}
+
+.locality {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+  text-align: right;
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+/* --- body --------------------------------------------------------------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-sm);
+  padding-top: var(--space-section-sm);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding-block: var(--space-8);
+}
+
+/* --- closing call to action --------------------------------------------- */
+
+/* A delivered development has nothing to sell, so the page ends on a
+ * conversation rather than on the Kouros II enquiry form. */
+.cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-10);
+  background: var(--white);
+  border: var(--border);
+  padding: clamp(1.5rem, 0.6rem + 2vw, 2.75rem);
+}
+
+.ctaCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 56ch;
+}
+
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex: none;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.contactLink:hover {
+  color: var(--ouro-700);
+}
+
+/* --- other developments ------------------------------------------------- */
+
+.related {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-block: var(--space-section) var(--space-section);
+}
+
+.relatedHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  /* 16/9 is a desktop proportion; on a phone it comes out as a strip too
+   * shallow to read as a photograph of a building. */
+  .hero {
+    aspect-ratio: 3 / 2 !important;
+  }
+
+  /* The rubric and the link are both single-line labels; side by side they
+   * are wider than a phone before either of them has anything to wrap. */
+  .relatedHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .locality {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 700px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

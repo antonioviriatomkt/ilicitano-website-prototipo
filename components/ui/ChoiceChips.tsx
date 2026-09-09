@@ -23,11 +23,7 @@ export function ChoiceChips({ label, name, options }: Props) {
       <legend className={styles.label}>{label}</legend>
       <div className={styles.options}>
         {options.map((option) => (
-          <label
-            key={option}
-            className={styles.chip}
-            data-selected={option === selected}
-          >
+          <label key={option} className={styles.chip} data-selected={option === selected}>
             <input
               type="radio"
               name={`${name}-${groupId}`}

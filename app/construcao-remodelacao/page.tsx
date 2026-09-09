@@ -26,8 +26,8 @@ export default function ConstrucaoRemodelacaoPage() {
           </h1>
           <p className={`lead ${styles.heroLead}`}>
             Combinamos experiência, materiais de qualidade e um acompanhamento rigoroso para
-            construir o seu futuro ou dar uma nova vida ao seu imóvel. Serviço chave na mão,
-            prazos cumpridos.
+            construir o seu futuro ou dar uma nova vida ao seu imóvel. Serviço chave na mão, prazos
+            cumpridos.
           </p>
           <div className={styles.heroActions}>
             <Button href="#orcamento" arrow>
@@ -110,8 +110,8 @@ export default function ConstrucaoRemodelacaoPage() {
               asideKind="prose"
               aside={
                 <p className="prose">
-                  Assumimos o compromisso de entregar um serviço chave na mão. Cuidamos de tudo —
-                  do planeamento inicial à escolha conjunta dos materiais, passando pela execução
+                  Assumimos o compromisso de entregar um serviço chave na mão. Cuidamos de tudo — do
+                  planeamento inicial à escolha conjunta dos materiais, passando pela execução
                   rigorosa e pelo cumprimento dos prazos acordados.
                 </p>
               }
@@ -141,8 +141,8 @@ export default function ConstrucaoRemodelacaoPage() {
             asideKind="prose"
             aside={
               <p className="prose">
-                Publicamos a obra como ela é — estrutura, redes técnicas, isolamentos — porque é
-                aí que se vê a diferença.
+                Publicamos a obra como ela é — estrutura, redes técnicas, isolamentos — porque é aí
+                que se vê a diferença.
               </p>
             }
           />

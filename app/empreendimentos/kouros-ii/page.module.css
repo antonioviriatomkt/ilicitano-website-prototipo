@@ -180,6 +180,15 @@
   text-align: right;
 }
 
+/* The floor plans are ILICITANO's to supply, so the cell marks the gap
+ * instead of linking into one. */
+.planPending {
+  font-size: var(--size-eyebrow);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
 /* --- proximity ---------------------------------------------------------- */
 
 .proximity {

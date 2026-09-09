@@ -21,8 +21,8 @@ export function QuoteBand() {
             Dê hoje o primeiro passo para a sua <em>nova casa.</em>
           </h2>
           <p className={styles.lead}>
-            Não adie mais o projeto que tanto deseja. Partilhe as suas ideias e peça o seu
-            orçamento gratuito e sem qualquer compromisso.
+            Não adie mais o projeto que tanto deseja. Partilhe as suas ideias e peça o seu orçamento
+            gratuito e sem qualquer compromisso.
           </p>
           <div className={styles.contact}>
             <a href={company.phoneHref} className={styles.contactLink}>

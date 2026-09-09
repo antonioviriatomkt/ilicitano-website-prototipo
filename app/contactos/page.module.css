@@ -1,0 +1,187 @@
+/* --- contactos diretos -------------------------------------------------- */
+
+.details {
+  padding-top: var(--space-section-sm);
+}
+
+/* The address column is given a quarter more width than the other three:
+ * the street line is the longest string in the row and an even split breaks
+ * it after "Loja 28". */
+.detailRow {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.25fr)
+    minmax(0, 1fr);
+  gap: var(--grid-gap);
+  padding-block: var(--space-12);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.detailTerm {
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* The number and the address are set at reading size, not at display size:
+ * this row is something to act on, not something to admire. */
+.detailLink,
+.detailPlain,
+.address {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.0625rem;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.detailLink:hover,
+.detailLink:focus-visible {
+  color: var(--ouro-700);
+}
+
+/* Two lines beside one pin, so the postal code stays under the street rather
+ * than wrapping around the icon. */
+.address {
+  align-items: flex-start;
+}
+
+/* Optical alignment: the 18px icon sits low in a 1.4 line box. */
+.address svg {
+  margin-top: 3px;
+}
+
+.addressLines {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- corpo -------------------------------------------------------------- */
+
+.body {
+  padding-block: var(--space-section);
+  align-items: start;
+}
+
+.formColumn {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.formHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.formHead > :last-child {
+  max-width: 46ch;
+}
+
+/* White lifts the form off the paper — the same move the dark quote band
+ * makes, without borrowing its weight: this page is not a sales close. */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  background: var(--white);
+  border: var(--border);
+  padding: clamp(1.25rem, -0.2rem + 3.2vw, 2.5rem);
+}
+
+.submit {
+  margin-top: var(--space-1);
+}
+
+.note {
+  text-align: center;
+}
+
+/* --- coluna lateral ----------------------------------------------------- */
+
+.aside {
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.asideBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* No embedded map in the prototype: an iframe would be the only third-party
+ * request on the site, and the real one is a decision for the live build. */
+.map {
+  min-height: 280px;
+}
+
+.asideAddress {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-size: var(--size-small);
+  color: var(--ink-2);
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.legalItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border-bottom: var(--border);
+  padding-block: var(--space-4);
+}
+
+.legalItem:first-child {
+  border-top: var(--border);
+}
+
+/* <dd> carries a UA margin-inline-start the reset does not clear. */
+.legalDetail {
+  margin: 0;
+  font-size: var(--size-small);
+  color: var(--ink-2);
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .detailRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--grid-gap);
+    padding-block: var(--space-8);
+  }
+
+  .body {
+    gap: var(--space-14);
+  }
+
+  .map {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detailRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

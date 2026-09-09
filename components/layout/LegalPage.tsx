@@ -32,9 +32,9 @@ export function LegalPage({ eyebrow, title, lead, children }: Props) {
           <Callout label="Documento por preencher">
             <p>
               Este documento é um <strong>esqueleto</strong>: tem a estrutura e os títulos das
-              secções, mas o texto de cada secção está por redigir e aparece entre parêntesis
-              retos. <strong>Não tem valor legal</strong> e não vincula a ILICITANO enquanto não
-              for redigido e validado por assessoria jurídica.
+              secções, mas o texto de cada secção está por redigir e aparece entre parêntesis retos.{" "}
+              <strong>Não tem valor legal</strong> e não vincula a ILICITANO enquanto não for
+              redigido e validado por assessoria jurídica.
             </p>
           </Callout>
         </Reveal>

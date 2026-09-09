@@ -13,8 +13,8 @@ export function Hero() {
           Mais do que casas, <em>criamos lares.</em>
         </h1>
         <p className={`lead ${styles.lead}`}>
-          Aqui, onde a sua história começa. Empreendimentos residenciais em Alcanena, Fátima,
-          Leiria e Lisboa — e obra chave na mão para a sua casa.
+          Aqui, onde a sua história começa. Empreendimentos residenciais em Alcanena, Fátima, Leiria
+          e Lisboa — e obra chave na mão para a sua casa.
         </p>
         <div className={styles.actions}>
           <Button href="/empreendimentos" arrow>

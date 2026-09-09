@@ -19,8 +19,8 @@ export function Portfolio() {
           asideKind="prose"
           aside={
             <p className="prose">
-              Moradias, condomínios privados e edifícios residenciais — construídos e promovidos
-              por nós, do projeto à entrega da chave.
+              Moradias, condomínios privados e edifícios residenciais — construídos e promovidos por
+              nós, do projeto à entrega da chave.
             </p>
           }
         />

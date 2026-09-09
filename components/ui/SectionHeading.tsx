@@ -16,13 +16,7 @@ type Props = {
  * The rubric-and-headline pair that opens every section, optionally with a
  * second column — a paragraph or a link — set against its baseline.
  */
-export function SectionHeading({
-  eyebrow,
-  title,
-  aside,
-  level = "h2",
-  asideKind = "link",
-}: Props) {
+export function SectionHeading({ eyebrow, title, aside, level = "h2", asideKind = "link" }: Props) {
   const Title = level;
   return (
     <div className={styles.wrap} data-aside={aside ? asideKind : undefined}>
@@ -30,9 +24,7 @@ export function SectionHeading({
         <span className="eyebrow">{eyebrow}</span>
         <Title className={`display ${level === "h1" ? "display-1" : "display-2"}`}>{title}</Title>
       </div>
-      {aside ? (
-        <div className={styles.aside}>{aside}</div>
-      ) : null}
+      {aside ? <div className={styles.aside}>{aside}</div> : null}
     </div>
   );
 }

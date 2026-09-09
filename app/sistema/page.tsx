@@ -84,10 +84,9 @@ export default function DesignSystemPage() {
       <Section title="Movimento">
         <p className="prose" style={{ maxWidth: "58ch" }}>
           Três durações e duas curvas cobrem o site inteiro. O movimento é lento, num só eixo e
-          nunca elástico — e todos os valores colapsam sob <code className={styles.code}>
-            prefers-reduced-motion
-          </code>
-          , pelo que nenhuma informação depende dele para ser lida.
+          nunca elástico — e todos os valores colapsam sob{" "}
+          <code className={styles.code}>prefers-reduced-motion</code>, pelo que nenhuma informação
+          depende dele para ser lida.
         </p>
 
         <div className={styles.motionTable}>

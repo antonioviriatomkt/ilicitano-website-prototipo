@@ -97,12 +97,7 @@ export function Header() {
       <div id="menu-mobile" className={styles.panel} data-open={menuOpen} hidden={!menuOpen}>
         <nav className={styles.panelNav} aria-label="Principal — telemóvel">
           {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={styles.panelLink}
-              onClick={closeMenu}
-            >
+            <Link key={item.href} href={item.href} className={styles.panelLink} onClick={closeMenu}>
               {item.label}
             </Link>
           ))}

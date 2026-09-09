@@ -16,9 +16,7 @@ type Props = {
 export function Placeholder({ children, note, ratio, className }: Props) {
   return (
     <div
-      className={[styles.placeholder, ratio && styles.ratioed, className]
-        .filter(Boolean)
-        .join(" ")}
+      className={[styles.placeholder, ratio && styles.ratioed, className].filter(Boolean).join(" ")}
       style={ratio ? { aspectRatio: ratio } : undefined}
     >
       <span className={styles.label}>{children}</span>

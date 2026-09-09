@@ -16,13 +16,7 @@ export function Checkbox({ name, children, required }: Props) {
   const id = `campo-${name}`;
   return (
     <div className={styles.row}>
-      <input
-        id={id}
-        type="checkbox"
-        name={name}
-        required={required}
-        className={styles.input}
-      />
+      <input id={id} type="checkbox" name={name} required={required} className={styles.input} />
       <label htmlFor={id} className={styles.label}>
         {children}
       </label>

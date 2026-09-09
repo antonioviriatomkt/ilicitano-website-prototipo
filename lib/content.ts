@@ -9,7 +9,8 @@
 export const company = {
   name: "ILICITANO",
   legalName: "ILICITANO S.A.",
-  tagline: "Promoção imobiliária, engenharia e construção. Definida pela qualidade, requinte e detalhe.",
+  tagline:
+    "Promoção imobiliária, engenharia e construção. Definida pela qualidade, requinte e detalhe.",
   phone: "+351 915 201 376",
   phoneHref: "tel:+351915201376",
   email: "geral@ilicitano.pt",
@@ -139,8 +140,7 @@ export const developments: Development[] = [
     statusLabel: "Concluído",
     photo: "/fotografia/vale-lobos.jpg",
     photoAlt: "Urbanização Vale de Lobos, Leiria — edifício com comércio no piso térreo",
-    intro:
-      "Urbanização com comércio no piso térreo e habitação nos pisos superiores, em Leiria.",
+    intro: "Urbanização com comércio no piso térreo e habitação nos pisos superiores, em Leiria.",
   },
 ];
 

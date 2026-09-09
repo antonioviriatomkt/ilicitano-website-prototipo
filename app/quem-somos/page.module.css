@@ -1,0 +1,198 @@
+/* --- facts -------------------------------------------------------------- */
+
+.factsBand {
+  padding-top: var(--space-section-sm);
+}
+
+.factsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  padding-block: var(--space-12);
+}
+
+/* --- a empresa ---------------------------------------------------------- */
+
+.company {
+  padding-top: var(--space-section);
+  align-items: center;
+}
+
+.companyMedia {
+  grid-column: span 5;
+}
+
+/* An empty column between photograph and text, as on the home's closing
+ * section — the widest gutter on the page is what makes this read slowly. */
+.companyCopy {
+  grid-column: 7 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* The company's own tagline. A rule on the left rather than quotation marks:
+ * the type is already the voice, the marks would only add noise. The rule is
+ * ink, not ouro — the gold means "em comercialização" and nothing else. */
+.quote {
+  margin-top: var(--space-2);
+  border-left: 2px solid var(--ink);
+  padding-left: var(--space-5);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--size-display-3);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+}
+
+/* --- setores ------------------------------------------------------------ */
+
+.sectors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  padding-top: var(--space-section);
+}
+
+.sectorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.sector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.sectorBody {
+  max-width: 40ch;
+}
+
+/* The .eyebrow primitive carries the type and the colour; this only opens a
+ * little air between the photograph and the rubric. */
+.sectorEyebrow {
+  margin-top: var(--space-2);
+  letter-spacing: var(--tracking-label);
+}
+
+.sectorTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.375rem, 1.15rem + 1vw, 1.75rem); /* 22 → 28 */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.sectorLink {
+  margin-top: var(--space-2);
+}
+
+/* --- equipa ------------------------------------------------------------- */
+
+.team {
+  padding-top: var(--space-section);
+  align-items: center;
+}
+
+.teamMedia {
+  grid-column: span 5;
+}
+
+.teamCopy {
+  grid-column: 7 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* --- fecho -------------------------------------------------------------- */
+
+.closing {
+  padding-block: var(--space-section) var(--space-section);
+}
+
+.closingInner {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--grid-gap);
+  align-items: start;
+  border-top: 1px solid var(--ink);
+  padding-top: var(--space-12);
+}
+
+.closingCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+}
+
+.credentials {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.credential {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+  gap: var(--space-4);
+  border-bottom: var(--border);
+  padding-block: var(--space-4);
+}
+
+.credential:first-child {
+  border-top: var(--border);
+}
+
+/* <dd> carries a UA margin-inline-start the reset does not clear. */
+.credentialDetail {
+  margin: 0;
+  font-size: var(--size-small);
+  color: var(--ink-2);
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .factsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--grid-gap);
+    padding-block: var(--space-8);
+  }
+
+  .companyMedia > * {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .closingInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+
+  .closingActions {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 700px) {
+  .sectorGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+
+  .credential {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+}

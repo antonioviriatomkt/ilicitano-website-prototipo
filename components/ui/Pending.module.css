@@ -1,0 +1,12 @@
+.pending {
+  display: inline-block;
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  /* Dashed, not solid: the underline of a TextLink means "this goes
+   * somewhere". This one deliberately does not. */
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 4px;
+}
