@@ -37,6 +37,18 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     siteName: "ILICITANO",
   },
+  /**
+   * This is a prototype on a temporary domain, wearing a real company's name
+   * and photography. Indexed, it would compete with ILICITANO's own site and
+   * put unfinished legal pages into search results under their brand. Remove
+   * this only when the site moves to ilicitano.pt for real.
+   */
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: { index: false, follow: false },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
