@@ -1,0 +1,41 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-2);
+  width: 100%;
+}
+
+.image {
+  object-fit: cover;
+  /* Photography moves on its own, slower clock (--dur-photo). Transform only:
+   * the frame clips, so nothing around the image is disturbed. */
+  transition: transform var(--dur-photo) var(--ease-out);
+}
+
+/* A frame inside a link is part of a card, and the whole card responds to the
+ * pointer. A frame that is not inside a link never moves. */
+a:hover .image,
+a:focus-visible .image {
+  transform: scale(var(--photo-zoom));
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Status chip overlay, inset from the frame's top-left corner. */
+.badge {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+}
+
+@media (min-width: 901px) {
+  .badge {
+    left: var(--space-5);
+    top: var(--space-5);
+  }
+}

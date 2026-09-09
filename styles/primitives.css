@@ -1,0 +1,116 @@
+/**
+ * Primitives — the handful of type and layout shapes used across every
+ * section. Anything with behaviour or internal structure is a component in
+ * components/ui instead; this file is only for classes that would otherwise
+ * be repeated verbatim in a dozen CSS modules.
+ */
+
+/* ------------------------------------------------------------------ layout */
+
+/* The page frame: centred, capped, with the gutter every section shares. */
+.page {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+/* The 12-column grid the artboards are drawn on. Below 900px every child
+ * spans the full width — the columns are a desktop device, not a phone one. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid > * {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+.hair {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  width: 100%;
+}
+
+/* ------------------------------------------------------------------- type */
+
+/* Display voice: Manrope Light, tight tracking. The emphasis span is the only
+ * place ouro-700 appears in a headline, and it is always a phrase, never a
+ * single word — the design reads the gold as a second clause, not a highlight. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  /* Deliberately not text-wrap: balance. The artboards break long/short —
+   * a full first line and a short second one carrying the gold clause — and
+   * balancing evens the two out, which loses that shape. */
+}
+
+.display em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ouro-700);
+}
+
+.display-1 {
+  font-size: var(--size-display-1);
+}
+
+.display-2 {
+  font-size: var(--size-display-2);
+  line-height: 1.1;
+}
+
+.display-3 {
+  font-size: var(--size-display-3);
+  line-height: 1.1;
+}
+
+/* The gold rubric that opens every section. */
+.eyebrow {
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--ouro-700);
+}
+
+.lead {
+  font-size: var(--size-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.prose {
+  font-size: var(--size-prose);
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.small {
+  font-size: var(--size-small);
+  color: var(--ink-2);
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+/* Uppercase micro-label — the metadata that sits opposite a card title. */
+.meta {
+  font-size: var(--size-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}

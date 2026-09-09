@@ -1,0 +1,47 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--grid-gap);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  /* Takes the room the aside leaves. min-width:0 stops the long Portuguese
+   * headlines from forcing the flex row wider than the page. */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* A link aside is only as wide as its label, so the flex row above is enough. */
+.aside {
+  flex: 0 0 auto;
+}
+
+/* A paragraph aside is a column, not a label, so it goes on the page grid:
+ * headline over seven columns, paragraph over four starting at the eighth.
+ * That is what breaks the portfolio headline where the artboard breaks it. */
+.wrap[data-aside="prose"] {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.wrap[data-aside="prose"] .main {
+  grid-column: span 7;
+}
+
+.wrap[data-aside="prose"] .aside {
+  grid-column: 8 / span 4;
+}
+
+@media (max-width: 900px) {
+  .wrap,
+  .wrap[data-aside="prose"] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+}

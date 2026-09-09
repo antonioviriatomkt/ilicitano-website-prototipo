@@ -1,0 +1,150 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+  height: var(--header-height);
+  transition: height var(--dur-base) var(--ease-out);
+}
+
+/* Past the first scroll the bar condenses. Height is the only thing that
+ * changes — the mark and the navigation keep their size, so nothing about
+ * the header re-reads as a different element. */
+.header[data-condensed="true"] .inner {
+  height: var(--header-height-compact);
+}
+
+.brand {
+  flex: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, -0.6rem + 2.2vw, 2.25rem);
+}
+
+.navLink {
+  position: relative;
+  padding-bottom: 3px;
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The gold rule under a nav item draws in from the left on hover and is
+ * simply present, undrawn, on the current page. */
+.navLink::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--ouro-700);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.navLink:hover,
+.navLink[data-active="true"] {
+  color: var(--ouro-700);
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after,
+.navLink[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  flex: none;
+}
+
+.lang {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--size-eyebrow);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+.langItem[data-active="true"] {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.menuButton {
+  display: none;
+  color: var(--ink);
+}
+
+/* --- mobile panel ------------------------------------------------------ */
+
+.panel {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--page-gutter) var(--space-8);
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.panelNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelLink {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.125rem;
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+/* The full navigation needs room for four long Portuguese labels; below this
+ * it goes behind the menu button rather than wrapping or shrinking further. */
+@media (max-width: 1080px) {
+  .nav,
+  .cta {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .panel {
+    display: flex;
+  }
+
+  /* The class above out-ranks the UA's [hidden] rule, so the closed panel
+   * would otherwise render open. Restate it at the same specificity. */
+  .panel[hidden] {
+    display: none;
+  }
+
+  .inner,
+  .header[data-condensed="true"] .inner {
+    height: var(--header-height-compact);
+  }
+}

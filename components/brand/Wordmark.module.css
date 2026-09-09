@@ -1,0 +1,26 @@
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--ink);
+}
+
+.lockup[data-tone="light"] {
+  color: var(--on-ink);
+}
+
+.monogram {
+  display: block;
+  flex: none;
+}
+
+/* The wide tracking is what makes the lettering read as a mark rather than a
+ * word; the trailing letter-space is trimmed so the lockup optically ends on
+ * the O rather than on empty space. */
+.word {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wordmark);
+  line-height: 1;
+  margin-right: calc(var(--tracking-wordmark) * -1);
+}

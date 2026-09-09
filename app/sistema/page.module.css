@@ -1,0 +1,178 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-block: var(--space-16) var(--space-section);
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-8);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: var(--space-6);
+}
+
+.mastheadCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  /* A ch on this element would resolve against the inherited 16px body font,
+   * not the 72px heading inside it — so the cap is set in px. */
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 880px;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: var(--space-8);
+  border-top: var(--border);
+  padding-top: var(--space-8);
+}
+
+.sectionTitle {
+  color: var(--ink-3);
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* --- palette ------------------------------------------------------------ */
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.chipColour {
+  height: 88px;
+  border: var(--border);
+  margin-bottom: var(--space-2);
+}
+
+.swatchName {
+  font-size: var(--size-small);
+  font-weight: 500;
+}
+
+.code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--ouro-700);
+}
+
+/* --- type --------------------------------------------------------------- */
+
+.specimens {
+  display: flex;
+  flex-direction: column;
+}
+
+.specimen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block: var(--space-6);
+  border-bottom: var(--border);
+}
+
+/* --- components --------------------------------------------------------- */
+
+.components {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.chips {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* --- motion ------------------------------------------------------------- */
+
+.motionTable {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border);
+}
+
+.motionRow {
+  display: grid;
+  grid-template-columns: 160px 130px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-bottom: var(--border);
+}
+
+/* The token's live value, printed by TokenValue from getComputedStyle. */
+.motionValue {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-top: var(--border);
+  padding-top: var(--space-6);
+}
+
+.demoRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  max-width: 480px;
+}
+
+.demoTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: var(--white);
+  border: var(--border);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--ink-3);
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .swatches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .motionRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+
+  .masthead {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

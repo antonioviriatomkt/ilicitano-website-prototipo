@@ -1,0 +1,29 @@
+/**
+ * Entrance motion. The element is laid out normally and only its paint is
+ * animated (opacity + a single-axis translate), so a reveal never shifts
+ * anything around it and never affects layout if the script never runs.
+ */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-shift), 0);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+  /* The hint costs memory on every revealed node; drop it once it has done
+   * its job, since a reveal plays exactly once. */
+  will-change: auto;
+}
+
+/* No JS: everything is visible. The reveal is an enhancement, so the page must
+ * be complete and readable without it. */
+:global(.no-js) .reveal {
+  opacity: 1;
+  transform: none;
+}

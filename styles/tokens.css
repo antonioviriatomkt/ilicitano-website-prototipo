@@ -1,0 +1,130 @@
+/**
+ * ILICITANO — design tokens.
+ *
+ * Single source of truth for the visual language. Token names mirror the
+ * "Linguagem visual" artboard so a value can be traced from the design canvas
+ * to the code without a translation table: --paper, --ink, --ouro, --line.
+ * Everything else in the codebase reads these; no component invents a colour,
+ * a duration or an easing of its own.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------------------------------------------------------------- colour
+   * Paper is the page. White is reserved for surfaces that need to lift off
+   * it (cards, the services band). Ouro is the single accent and carries one
+   * meaning only — "em comercialização" / active state. */
+  --paper: #f6f3ec;
+  --paper-2: #ede8dc;
+  --white: #ffffff;
+
+  --ink: #1e2025;
+  --ink-2: #4b4d53;
+  --ink-3: #83858c;
+
+  --line: #dcd6c7;
+  --line-2: #eae5d9;
+  /* Hairlines on the dark footer — --line disappears against --ink. */
+  --line-dark: #3a3c43;
+
+  --ouro: #dad08a;
+  --ouro-700: #8a7b2e;
+  --ouro-100: #f3efd8;
+
+  /* Text on the dark footer. */
+  --on-ink: #ffffff;
+  --on-ink-2: #d9dbe0;
+  --on-ink-3: #b9bbc2;
+
+  /* ------------------------------------------------------------ typography
+   * Two sans, two jobs. Display (Manrope Light) is for headline voice only;
+   * UI (Jost) carries every piece of information and interface. Both are
+   * loaded by next/font in app/layout.tsx, which sets the two --font-* vars. */
+  --font-display: var(--font-manrope), "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: var(--font-jost), "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
+
+  /* Display sizes collapse one step on tablet and two on phone; the clamp
+   * floor/ceiling pairs are the desktop artboard value and its mobile
+   * artboard counterpart, so no size is invented between the two. */
+  --size-display-1: clamp(2.5rem, 1.6rem + 3.9vw, 4.5rem); /* 40 → 72 */
+  --size-display-2: clamp(1.875rem, 1.15rem + 3.1vw, 3rem); /* 30 → 48 */
+  --size-display-3: clamp(1.875rem, 1.5rem + 1.6vw, 2.25rem); /* 30 → 36 */
+  --size-lead: clamp(1rem, 0.9rem + 0.44vw, 1.25rem); /* 16 → 20 */
+  --size-prose: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem); /* 16 → 17 */
+  --size-body: 1rem;
+  --size-small: 0.8125rem;
+  --size-label: 0.75rem;
+  --size-eyebrow: 0.6875rem;
+
+  --tracking-display: -0.025em;
+  --tracking-label: 0.16em;
+  --tracking-eyebrow: 0.2em;
+  --tracking-wordmark: 0.34em;
+
+  --leading-display: 1.06;
+  --leading-body: 1.55;
+
+  /* ----------------------------------------------------------------- space
+   * A 4px base. Section rhythm is expressed in --space-section-* so vertical
+   * pacing can be retuned in one place. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --space-section: clamp(3.5rem, 1.5rem + 8.7vw, 8.75rem); /* 56 → 140 */
+  --space-section-sm: clamp(2.5rem, 1.2rem + 5.6vw, 6rem); /* 40 → 96 */
+
+  /* ---------------------------------------------------------------- layout */
+  --page-max: 1440px;
+  --page-gutter: clamp(1.25rem, -0.5rem + 5.6vw, 5rem); /* 20 → 80 */
+  --grid-gap: clamp(1.25rem, 0.4rem + 1.8vw, 2rem); /* 20 → 32 */
+  --header-height: 88px;
+  --header-height-compact: 68px;
+
+  /* ---------------------------------------------------------------- motion
+   * The brand is calm and architectural, so motion is slow, single-axis and
+   * never springy. Three durations and two easings cover the whole site;
+   * anything that needs a fourth is probably the wrong idea.
+   *
+   *   --ease-out    settles without overshoot — entrances, reveals
+   *   --ease-inout  symmetric — things that open and close
+   *
+   * Every animation must degrade under prefers-reduced-motion (see
+   * globals.css), so motion is always an enhancement, never load-bearing. */
+  --dur-instant: 120ms;
+  --dur-fast: 200ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+  --dur-reveal: 760ms;
+  /* Photography moves slower than interface — a slow push-in reads as
+   * cinematic, the interface speed reads as a glitch. */
+  --dur-photo: 900ms;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Distance a revealed element travels, and how far photography pushes in. */
+  --reveal-shift: 20px;
+  --photo-zoom: 1.04;
+  /* Stagger between siblings in a revealed group. */
+  --stagger: 90ms;
+
+  /* ------------------------------------------------------------------ misc
+   * No radii anywhere: the monogram is built from square-cut bars and the
+   * grid is orthogonal, so every corner in the system is a right angle. */
+  --radius: 0px;
+  --border: 1px solid var(--line);
+  --z-header: 100;
+  --z-menu: 200;
+}

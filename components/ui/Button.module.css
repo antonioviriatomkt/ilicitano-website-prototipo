@@ -1,0 +1,79 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: 52px;
+  padding-inline: var(--space-7);
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.compact {
+  height: 44px;
+  padding-inline: var(--space-5);
+}
+
+.block {
+  width: 100%;
+}
+
+/* The arrow is the only part of a button that moves. It travels a token
+ * distance on hover and returns on the same curve — the button itself never
+ * lifts or scales, which would read as too eager for this brand. */
+.arrow {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.button:hover .arrow,
+.button:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+/* --- variants ---------------------------------------------------------- */
+
+.solid {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+.solid:hover {
+  background: #000;
+  color: var(--on-ink);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.ghost:hover {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+
+/* For placement on --ink surfaces; hovers to ouro rather than to white, so
+ * the accent keeps meaning something even on the dark footer. */
+.light {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.light:hover {
+  background: var(--ouro);
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+  }
+}

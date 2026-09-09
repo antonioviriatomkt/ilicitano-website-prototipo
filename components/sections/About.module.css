@@ -1,0 +1,62 @@
+.section {
+  padding-block: var(--space-section-sm) var(--space-section);
+  align-items: center;
+}
+
+.media {
+  grid-column: span 5;
+}
+
+/* Leaves an empty column between the photograph and the text — the widest
+ * gutter on the page, which is what makes this closing section read as slower
+ * than everything above it. */
+.copy {
+  grid-column: 7 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-top: var(--border);
+  padding-top: var(--space-6);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 1.125rem;
+}
+
+.contactLink:hover {
+  color: var(--ouro-700);
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .media > * {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
