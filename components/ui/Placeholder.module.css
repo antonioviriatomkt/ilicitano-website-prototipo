@@ -14,7 +14,7 @@
   background: repeating-linear-gradient(
     135deg,
     var(--paper-2) 0 10px,
-    #f3efe5 10px 20px
+    var(--paper-3) 10px 20px
   );
   color: var(--ink-3);
 }

@@ -34,7 +34,7 @@
 
 .lead {
   font-size: var(--size-prose);
-  color: #c9cbd1;
+  color: var(--on-ink-prose);
   max-width: 44ch;
 }
 

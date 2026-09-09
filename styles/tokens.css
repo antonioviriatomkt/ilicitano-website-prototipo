@@ -17,9 +17,14 @@
    * meaning only — "em comercialização" / active state. */
   --paper: #f6f3ec;
   --paper-2: #ede8dc;
+  /* The lighter band of the placeholder hatching. */
+  --paper-3: #f3efe5;
   --white: #ffffff;
 
   --ink: #1e2025;
+  /* Pressed/hover state for ink-filled buttons — the only thing on the site
+   * that goes darker than --ink. */
+  --ink-strong: #000000;
   --ink-2: #4b4d53;
   --ink-3: #83858c;
 
@@ -36,6 +41,8 @@
   --on-ink: #ffffff;
   --on-ink-2: #d9dbe0;
   --on-ink-3: #b9bbc2;
+  /* Body copy set on --ink at prose size, one step softer than --on-ink-2. */
+  --on-ink-prose: #c9cbd1;
 
   /* ------------------------------------------------------------ typography
    * Two sans, two jobs. Display (Manrope Light) is for headline voice only;

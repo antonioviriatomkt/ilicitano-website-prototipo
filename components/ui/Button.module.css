@@ -45,7 +45,7 @@
 }
 
 .solid:hover {
-  background: #000;
+  background: var(--ink-strong);
   color: var(--on-ink);
 }
 

@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.input {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  /* Optically aligns the box with the first line of the label. */
+  margin: 4px 0 0;
+  accent-color: var(--ink);
+}
+
+.label {
+  font-size: var(--size-small);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.label a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.label a:hover {
+  color: var(--ouro-700);
+}
