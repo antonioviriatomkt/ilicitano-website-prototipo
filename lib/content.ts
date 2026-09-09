@@ -51,6 +51,8 @@ export type Development = {
   statusLabel: string;
   photo: string;
   photoAlt: string;
+  /** object-position, where a centred crop loses the subject. */
+  focus?: string;
   /** One line under the name on the development page. */
   intro: string;
 };
@@ -82,6 +84,10 @@ export const developments: Development[] = [
     statusLabel: "Concluído",
     photo: "/fotografia/sao-bento.jpg",
     photoAlt: "São Bento, Lisboa — fachada do edifício reabilitado",
+    // The restored building is on the left of the frame; its derelict
+    // neighbour is on the right. A centred crop shows mostly the neighbour,
+    // under a chip that says "Concluído".
+    focus: "left center",
     intro:
       "Reabilitação de um edifício no coração de Lisboa, devolvido à cidade sem perder o carácter da fachada original.",
   },
@@ -118,6 +124,11 @@ export const developments: Development[] = [
     statusLabel: "Concluído",
     photo: "/fotografia/vale-cavalos.jpg",
     photoAlt: "Villas Vale de Cavalos, Fátima — moradia geminada",
+    // This photograph carries another studio's watermark in the bottom-right
+    // corner. Framing left keeps it out of the 4/3 crops; it is still visible
+    // in the wide crop on the development page. See the note in the README —
+    // it needs replacing, not cropping.
+    focus: "left center",
     intro: "Moradias geminadas em Fátima, de linhas contemporâneas e volumetria simples.",
   },
   {
@@ -236,7 +247,7 @@ export const services: Service[] = [
     shortLabel: "Remodelação parcial",
     href: "/construcao-remodelacao#parcial",
     photo: "/fotografia/wc-marmore.jpg",
-    photoAlt: "Casa de banho remodelada em mármore",
+    photoAlt: "Casa de banho remodelada em mármore claro",
     body: "Atualizamos divisões específicas da sua casa ou local de trabalho. Projetamos e renovamos cozinhas, casas de banho, quartos ou qualquer outra divisão.",
   },
 ];

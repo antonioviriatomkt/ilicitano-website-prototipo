@@ -23,7 +23,13 @@ export function ProjectCard({
   const forSale = development.status === "venda";
   return (
     <Link href={`/empreendimentos/${development.slug}`} className={styles.card}>
-      <Frame src={development.photo} alt={development.photoAlt} ratio="4 / 3" sizes={sizes}>
+      <Frame
+        src={development.photo}
+        alt={development.photoAlt}
+        ratio="4 / 3"
+        sizes={sizes}
+        focus={development.focus}
+      >
         <span className={frameStyles.badge}>
           <Chip tone={forSale ? "venda" : "default"}>
             {forSale ? "Em comercialização" : "Concluído"}

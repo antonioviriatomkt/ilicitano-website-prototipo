@@ -11,6 +11,12 @@ type Props = {
   sizes: string;
   /** Only the hero image should be priority — it is the LCP element. */
   priority?: boolean;
+  /**
+   * CSS object-position. The default centre crop is wrong for photographs
+   * whose subject sits off to one side — the São Bento façade shares its
+   * frame with a derelict neighbour, and a centred crop shows the neighbour.
+   */
+  focus?: string;
   /** Overlaid content, e.g. the status chip on a portfolio card. */
   children?: ReactNode;
   className?: string;
@@ -21,13 +27,21 @@ type Props = {
  * --paper-2, so an image that is still loading holds its exact final space
  * and the page never reflows underneath the reader.
  */
-export function Frame({ src, alt, ratio, sizes, priority, children, className }: Props) {
+export function Frame({ src, alt, ratio, sizes, priority, focus, children, className }: Props) {
   return (
     <div
       className={[styles.frame, className].filter(Boolean).join(" ")}
       style={{ aspectRatio: ratio }}
     >
-      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className={styles.image} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        className={styles.image}
+        style={focus ? { objectPosition: focus } : undefined}
+      />
       {children}
     </div>
   );

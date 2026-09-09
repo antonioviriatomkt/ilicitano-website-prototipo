@@ -39,8 +39,8 @@ export default function ConstrucaoRemodelacaoPage() {
 
         <Reveal className={styles.heroGallery} index={1}>
           <Frame
-            src="/fotografia/cozinha.jpg"
-            alt="Cozinha remodelada, com eletrodomésticos encastrados"
+            src="/fotografia/vale-lobos-cozinha.jpg"
+            alt="Cozinha equipada, com bancada em tom escuro e placa de indução"
             ratio="4 / 5"
             sizes="(max-width: 900px) 100vw, 26vw"
             priority
@@ -54,8 +54,8 @@ export default function ConstrucaoRemodelacaoPage() {
               sizes="(max-width: 900px) 50vw, 26vw"
             />
             <Frame
-              src="/fotografia/wc-preto.jpg"
-              alt="Casa de banho remodelada em tons escuros"
+              src="/fotografia/wc-marmore.jpg"
+              alt="Casa de banho remodelada em mármore claro"
               ratio="1 / 1"
               sizes="(max-width: 900px) 50vw, 26vw"
             />

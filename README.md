@@ -110,6 +110,27 @@ verificadas a 390, 768 e 1440 px: estado HTTP correto, sem scroll horizontal, um
 página, nenhuma imagem sem `alt`, nenhuma revelação presa a opacidade 0 e zero erros de consola.
 O grafo de ligações internas não tem ligações mortas.
 
+## Fotografia
+
+Toda a fotografia em `public/fotografia/` é da ILICITANO, tirada do site atual. Três notas que
+precisam de decisão do cliente:
+
+- **`vale-cavalos.jpg` tem a marca de água de outro estúdio** ("WORKMI STUDIO") no canto inferior
+  direito. O enquadramento (`focus` no modelo `developments`) mantém-na fora dos cortes 4/3, mas
+  ela continua lá no ficheiro e aparece em cortes mais largos. Não foi recortada de propósito:
+  apagar a marca de água de terceiros é apagar uma atribuição. Ou a ILICITANO confirma que a
+  imagem é dela e fornece uma versão limpa, ou usa-se outra.
+- **`cozinha.jpg` é uma fotografia de obra por acabar** — buraco por baixo da placa, película nos
+  eletrodomésticos, remate do pavimento por fazer. Era a maior imagem da home. Saiu de todo o
+  site; a substituta é `vale-lobos-cozinha.jpg`.
+- **`sao-bento.jpg` divide o enquadramento com o prédio degradado do lado.** O edifício
+  reabilitado é o da esquerda, e o `focus` põe-no a dominar o corte — mas por baixo de um chip
+  "Concluído" convém uma fotografia só do edifício entregue.
+
+Em geral, esta é a parte do protótipo que mais ganha com material melhor: fotografia de obra
+acabada, renders do Kouros II e plantas. Chegando material novo, entra em `public/fotografia/` e
+troca-se o caminho em `lib/content.ts` — nenhum componente precisa de mudar.
+
 ## Estado
 
 Todas as rotas do protótipo estão construídas. O que falta é do cliente, não do código:
