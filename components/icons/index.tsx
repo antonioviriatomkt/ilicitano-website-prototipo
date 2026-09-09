@@ -101,3 +101,25 @@ export function Tick({ className }: { className?: string }) {
     </svg>
   );
 }
+
+export function Walk(props: IconProps) {
+  return (
+    <Icon {...props} size={props.size ?? 16}>
+      <circle cx="13" cy="4" r="1.5" />
+      <path d="M10 21l2-6 2 2v4" />
+      <path d="M9 12l2-3 3 1 2 3" />
+      <path d="M9 12l-2 4" />
+    </Icon>
+  );
+}
+
+export function Car(props: IconProps) {
+  return (
+    <Icon {...props} size={props.size ?? 16}>
+      <path d="M4 15l1.5-5A2 2 0 0 1 7.4 8.5h9.2a2 2 0 0 1 1.9 1.5L20 15" />
+      <rect x="3" y="15" width="18" height="4" />
+      <circle cx="7" cy="19" r="1.5" />
+      <circle cx="17" cy="19" r="1.5" />
+    </Icon>
+  );
+}

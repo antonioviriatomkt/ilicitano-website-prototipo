@@ -7,7 +7,7 @@ import { Fact } from "@/components/ui/Fact";
 import { Frame } from "@/components/ui/Frame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TextLink } from "@/components/ui/TextLink";
-import { featured } from "@/lib/content";
+import { kourosII } from "@/lib/content";
 import frameStyles from "@/components/ui/Frame.module.css";
 import styles from "./Featured.module.css";
 
@@ -34,34 +34,34 @@ export function Featured() {
       <div className={`grid ${styles.body}`}>
         <Reveal className={styles.media}>
           <Frame
-            src={featured.photo}
-            alt={featured.photoAlt}
+            src={kourosII.photo}
+            alt={kourosII.photoAlt}
             ratio="7 / 5"
             sizes="(max-width: 900px) 100vw, 58vw"
           >
             <span className={frameStyles.badge}>
-              <Chip tone="venda">{featured.status}</Chip>
+              <Chip tone="venda">{kourosII.homeCard.statusChip}</Chip>
             </span>
           </Frame>
-          <span className="small muted">{featured.photoCaption}</span>
+          <span className="small muted">{kourosII.homeCard.photoCaption}</span>
         </Reveal>
 
         <Reveal className={styles.card} index={1}>
           <div className={styles.cardHead}>
-            <h3 className="display display-3">{featured.name}</h3>
+            <h3 className="display display-3">{kourosII.name}</h3>
             <span className={styles.location}>
-              <Pin /> {featured.location}
+              <Pin /> {kourosII.homeCard.location}
             </span>
           </div>
 
           <div className={styles.specs}>
-            {featured.specs.map((spec) => (
+            {kourosII.specs.map((spec) => (
               <Fact key={spec.label} value={spec.value} label={spec.label} size="sm" />
             ))}
           </div>
 
           <ul className={styles.features}>
-            {featured.features.map((feature) => (
+            {kourosII.homeCard.highlights.map((feature) => (
               <li key={feature}>
                 <Tick className={styles.tick} />
                 {feature}
@@ -73,7 +73,7 @@ export function Featured() {
             <Button href="/marcar-visita" block arrow>
               Marcar visita à obra
             </Button>
-            <TextLink href={featured.href}>Ver ficha do empreendimento</TextLink>
+            <TextLink href={`/empreendimentos/${kourosII.slug}`}>Ver ficha do empreendimento</TextLink>
           </div>
         </Reveal>
       </div>

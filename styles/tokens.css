@@ -87,7 +87,10 @@
 
   /* ---------------------------------------------------------------- layout */
   --page-max: 1440px;
-  --page-gutter: clamp(1.25rem, -0.5rem + 5.6vw, 5rem); /* 20 → 80 */
+  /* 20 → 80. The slope is set so the cap is reached at 1400px, i.e. the
+   * gutter is exactly the artboard's 80px at the 1440 the design was drawn
+   * at — the earlier curve was still climbing there and landed on 72.6. */
+  --page-gutter: clamp(1.25rem, -0.25rem + 6vw, 5rem);
   --grid-gap: clamp(1.25rem, 0.4rem + 1.8vw, 2rem); /* 20 → 32 */
   --header-height: 88px;
   --header-height-compact: 68px;

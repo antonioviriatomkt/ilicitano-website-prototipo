@@ -23,6 +23,12 @@
   gap: var(--grid-gap);
 }
 
+/* Grid items default to min-width:auto, so one item with a wide min-content
+ * can push the whole row past the page. Nothing in this layout wants that. */
+.grid > * {
+  min-width: 0;
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);

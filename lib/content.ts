@@ -37,79 +37,250 @@ export const facts = [
   { value: "Alvará", label: "123006 - PAR · Construção e engenharia" },
 ] as const;
 
-/** The one development currently on the market — the only gold-chipped item. */
-export const featured = {
-  name: "Kouros II",
-  location: "Centro de Alcanena",
-  href: "/empreendimentos/kouros-ii",
-  status: "Em construção",
-  photo: "/fotografia/kouros2-obra.jpg",
-  photoAlt: "Kouros II — laje em construção, vista aérea",
-  photoCaption: "Estado da obra — junho de 2026",
-  specs: [
-    { value: "T1·T2·T3", label: "Tipologias" },
-    { value: "[área] m²", label: "Áreas" },
-    { value: "[preço] €", label: "Desde" },
-  ],
-  features: [
-    "Cozinhas equipadas e casas de banho com acabamentos premium",
-    "Isolamento térmico classe A e acústico, vidro duplo com estores elétricos",
-    "Parqueamento no piso -1, elevador e pré-instalação de AC",
-    "Com a obra em curso, ainda pode escolher alguns acabamentos",
-  ],
-} as const;
+export type DevelopmentStatus = "venda" | "concluido";
 
-export const portfolio = [
+export type Development = {
+  slug: string;
+  name: string;
+  location: string;
+  /** Short right-hand label on a card — typologies, or what the project is. */
+  meta: string;
+  status: DevelopmentStatus;
+  /** Chip label. Longer than `meta`, and only shown on a development page. */
+  statusLabel: string;
+  photo: string;
+  photoAlt: string;
+  /** One line under the name on the development page. */
+  intro: string;
+};
+
+/**
+ * Every development, in the order they should be listed. Exactly one carries
+ * status "venda" at a time — it is the only thing on the site allowed to wear
+ * the gold chip.
+ */
+export const developments: Development[] = [
   {
+    slug: "kouros-ii",
+    name: "Kouros II",
+    location: "Centro da cidade de Alcanena",
+    meta: "T1 · T2 · T3",
+    status: "venda",
+    statusLabel: "Em construção · em comercialização",
+    photo: "/fotografia/kouros2-obra.jpg",
+    photoAlt: "Kouros II — laje em construção, vista aérea",
+    intro:
+      "No coração de Alcanena nasce um empreendimento moderno, pensado para quem procura conforto, qualidade e estilo de vida.",
+  },
+  {
+    slug: "sao-bento",
     name: "São Bento",
     location: "Lisboa · coração da cidade",
     meta: "T2 · T3 · T4",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/sao-bento.jpg",
-    href: "/empreendimentos/sao-bento",
+    photoAlt: "São Bento, Lisboa — fachada do edifício reabilitado",
+    intro:
+      "Reabilitação de um edifício no coração de Lisboa, devolvido à cidade sem perder o carácter da fachada original.",
   },
   {
+    slug: "kouros-building",
     name: "Kouros Building",
     location: "Alcanena",
     meta: "T2 · T3",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/kouros-building.jpg",
-    href: "/empreendimentos/kouros-building",
+    photoAlt: "Kouros Building, Alcanena — fachada com varandas",
+    intro:
+      "O primeiro Kouros: um edifício residencial no centro de Alcanena, entregue chave na mão.",
   },
   {
+    slug: "stone-village",
     name: "Stone Village",
     location: "Zona costeira de Leiria",
     meta: "Condomínio privado",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/stone-village.jpg",
-    href: "/empreendimentos/stone-village",
+    photoAlt: "Stone Village — moradias em condomínio privado",
+    intro:
+      "Condomínio privado de moradias na zona costeira de Leiria, com piscina e espaços comuns ajardinados.",
   },
   {
+    slug: "villas-vale-de-cavalos",
     name: "Villas Vale de Cavalos",
     location: "Fátima",
     meta: "Moradias geminadas",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/vale-cavalos.jpg",
-    href: "/empreendimentos/villas-vale-de-cavalos",
+    photoAlt: "Villas Vale de Cavalos, Fátima — moradia geminada",
+    intro: "Moradias geminadas em Fátima, de linhas contemporâneas e volumetria simples.",
   },
   {
+    slug: "villas-alfaiate",
     name: "Villas Alfaiate",
     location: "Leiria",
     meta: "Moradias T3",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/alfaiate.jpg",
-    href: "/empreendimentos/villas-alfaiate",
+    photoAlt: "Villas Alfaiate, Leiria — conjunto de moradias T3",
+    intro: "Conjunto de moradias T3 em Leiria, com pátio e estacionamento privativo.",
   },
   {
+    slug: "urbanizacao-vale-de-lobos",
     name: "Urbanização Vale de Lobos",
     location: "Leiria",
     meta: "Comércio + T1 · T2 · T3",
+    status: "concluido",
+    statusLabel: "Concluído",
     photo: "/fotografia/vale-lobos.jpg",
-    href: "/empreendimentos/urbanizacao-vale-de-lobos",
+    photoAlt: "Urbanização Vale de Lobos, Leiria — edifício com comércio no piso térreo",
+    intro:
+      "Urbanização com comércio no piso térreo e habitação nos pisos superiores, em Leiria.",
+  },
+];
+
+export const forSale = developments.filter((d) => d.status === "venda");
+export const completed = developments.filter((d) => d.status === "concluido");
+
+export function developmentBySlug(slug: string) {
+  return developments.find((d) => d.slug === slug);
+}
+
+/** The detail only the development page shows, keyed by slug. */
+export const kourosII = {
+  ...developments[0],
+  completion: "Conclusão prevista: [trimestre / ano]",
+  /**
+   * The home's card says less than the development page, in shorter words —
+   * it has to sell the click, not answer every question.
+   */
+  homeCard: {
+    statusChip: "Em construção",
+    location: "Centro de Alcanena",
+    photoCaption: "Estado da obra — junho de 2026",
+    highlights: [
+      "Cozinhas equipadas e casas de banho com acabamentos premium",
+      "Isolamento térmico classe A e acústico, vidro duplo com estores elétricos",
+      "Parqueamento no piso -1, elevador e pré-instalação de AC",
+      "Com a obra em curso, ainda pode escolher alguns acabamentos",
+    ],
+  },
+  galleryCaption: "Fotografia de obra — junho de 2026 · 1 / 3",
+  specs: [
+    { value: "T1 · T2 · T3", label: "Tipologias" },
+    { value: "[frações]", label: "Apartamentos · [n] disponíveis" },
+    { value: "Classe A", label: "Isolamento térmico" },
+  ],
+  features: [
+    "Cozinhas modernas equipadas",
+    "Casas de banho com louça suspensa e acabamentos premium",
+    "Janelas de vidro duplo com estores elétricos",
+    "Varandas com vista desafogada",
+    "Parqueamento no piso -1",
+    "Elevador",
+    "Isolamento térmico (classe A) e acústico",
+    "Pré-instalação de ar condicionado",
+  ],
+  /** Every figure here is ILICITANO's to supply — see the note at the top. */
+  units: [
+    { typology: "T1", area: "[área] m²", floor: "[piso]", price: "[preço] €" },
+    { typology: "T2", area: "[área] m²", floor: "[piso]", price: "[preço] €" },
+    { typology: "T3", area: "[área] m²", floor: "[piso]", price: "[preço] €" },
+  ],
+  proximity: [
+    { place: "Escola", time: "3 min", icon: "walk" },
+    { place: "Supermercados", time: "4 min", icon: "walk" },
+    { place: "Ginásios", time: "5 min", icon: "walk" },
+    { place: "Nó das autoestradas A1 e A23", time: "6 min", icon: "car" },
+    { place: "Farmácias, clínicas e hospital", time: "perto", icon: "walk" },
+    { place: "Jardins, cultura, restaurantes e cafés", time: "perto", icon: "walk" },
+  ],
+} as const;
+
+export type Service = {
+  slug: string;
+  label: string;
+  /** Used where the full label is too long — chips, the home's list. */
+  shortLabel?: string;
+  href: string;
+  photo: string;
+  photoAlt: string;
+  body: string;
+};
+
+export const services: Service[] = [
+  {
+    slug: "raiz",
+    label: "Construção de raiz",
+    href: "/construcao-remodelacao#raiz",
+    photo: "/fotografia/render-moradia.jpg",
+    photoAlt: "Moradia contemporânea construída de raiz",
+    body: "Executamos o seu projeto desde as fundações até à entrega da chave: estrutura, alvenarias, instalações técnicas e acabamentos, com rigor técnico e cumprimento de prazos.",
+  },
+  {
+    slug: "integral",
+    label: "Remodelação integral",
+    href: "/construcao-remodelacao#integral",
+    photo: "/fotografia/corredor.jpg",
+    photoAlt: "Corredor remodelado de uma habitação",
+    body: "Transformação completa de moradias, apartamentos ou escritórios, adaptando cada divisão às suas necessidades atuais.",
+  },
+  {
+    slug: "parcial",
+    label: "Remodelação parcial — cozinhas, casas de banho, quartos",
+    shortLabel: "Remodelação parcial",
+    href: "/construcao-remodelacao#parcial",
+    photo: "/fotografia/wc-marmore.jpg",
+    photoAlt: "Casa de banho remodelada em mármore",
+    body: "Atualizamos divisões específicas da sua casa ou local de trabalho. Projetamos e renovamos cozinhas, casas de banho, quartos ou qualquer outra divisão.",
+  },
+];
+
+/** The four steps of a turnkey job, as shown on Construção & Remodelação. */
+export const process = [
+  {
+    number: "01",
+    title: "Planeamento",
+    body: "Visita, levantamento e orçamento detalhado — gratuito e sem compromisso.",
+  },
+  {
+    number: "02",
+    title: "Materiais",
+    body: "Escolha conjunta dos materiais e acabamentos, com a nossa equipa.",
+  },
+  {
+    number: "03",
+    title: "Execução",
+    body: "Execução rigorosa, acompanhamento próximo e cumprimento dos prazos acordados.",
+  },
+  {
+    number: "04",
+    title: "Entrega",
+    body: "Prazo acordado, sem surpresas, sem dores de cabeça. Entrega da chave.",
   },
 ] as const;
 
-export const services = [
-  { label: "Construção de raiz", href: "/construcao-remodelacao#raiz" },
-  { label: "Remodelação integral", href: "/construcao-remodelacao#integral" },
+/** Structural work, shown as it really looks. */
+export const buildStages = [
   {
-    label: "Remodelação parcial — cozinhas, casas de banho, quartos",
-    href: "/construcao-remodelacao#parcial",
+    label: "01 — Estrutura",
+    photo: "/fotografia/obra-laje.jpg",
+    photoAlt: "Laje em construção",
+  },
+  {
+    label: "02 — Divisórias e redes técnicas",
+    photo: "/fotografia/obra-divisorias.jpg",
+    photoAlt: "Divisórias e redes técnicas em obra",
+  },
+  {
+    label: "03 — Acabamentos",
+    photo: "/fotografia/vale-lobos-cozinha.jpg",
+    photoAlt: "Cozinha acabada",
   },
 ] as const;
 

@@ -1,0 +1,34 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  /* Floor for a placeholder with no ratio (the map). With a ratio it has to
+   * go, or the box derives a min-width from it — 160px at 4/3 is a 213px
+   * minimum, which is wider than a phone column. */
+  min-height: 160px;
+  height: 100%;
+  padding: var(--space-4);
+  text-align: center;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--paper-2) 0 10px,
+    #f3efe5 10px 20px
+  );
+  color: var(--ink-3);
+}
+
+.label {
+  font-size: var(--size-eyebrow);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.note {
+  font-size: 0.75rem;
+}
+
+.ratioed {
+  min-height: 0;
+}

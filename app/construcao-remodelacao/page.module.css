@@ -1,0 +1,232 @@
+/* --- hero --------------------------------------------------------------- */
+
+.hero {
+  padding-top: var(--space-section-sm);
+  align-items: center;
+}
+
+.heroCopy {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-7);
+}
+
+/* A step below the home's H1 — this page argues, the home announces. */
+.heroTitle {
+  font-size: clamp(2.25rem, 1.3rem + 4.1vw, 4.125rem); /* 36 → 66 */
+  line-height: 1.06;
+}
+
+.heroLead {
+  font-size: clamp(1rem, 0.87rem + 0.55vw, 1.1875rem); /* 16 → 19 */
+  max-width: 32ch;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+}
+
+.heroGallery {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.heroTall {
+  /* Stretched by the grid row rather than by its own ratio. */
+  height: 100%;
+  aspect-ratio: auto !important;
+}
+
+.heroStack {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+/* --- services ----------------------------------------------------------- */
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+  padding-top: var(--space-section);
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+  /* Offsets the sticky header when the in-page links jump here. */
+  scroll-margin-top: calc(var(--header-height-compact) + var(--space-8));
+}
+
+.serviceBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.serviceTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 1.875rem); /* 24 → 30 */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.serviceCard:hover .serviceTitle {
+  color: var(--ouro-700);
+}
+
+.serviceMore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.serviceCard:hover .serviceMore {
+  border-color: var(--ouro-700);
+}
+
+.serviceArrow {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.serviceCard:hover .serviceArrow {
+  transform: translateX(4px);
+}
+
+/* --- process ------------------------------------------------------------ */
+
+.processBand {
+  margin-top: var(--space-section);
+  background: var(--white);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding-block: var(--space-section-sm);
+}
+
+.processInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* The rule above each step is ink, not line — four heavy starts read as a
+ * sequence, where four hairlines would read as one more table. */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  border-top: 1px solid var(--ink);
+  padding-top: var(--space-5);
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 2.25rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ouro-700);
+}
+
+.stepTitle {
+  font-size: 1.1875rem;
+}
+
+.stepBody {
+  font-size: 0.90625rem;
+  color: var(--ink-2);
+}
+
+/* --- stages ------------------------------------------------------------- */
+
+.stages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-top: var(--space-section);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stageLabel {
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .heroTall {
+    grid-column: span 2;
+    aspect-ratio: 3 / 2 !important;
+  }
+
+  .heroStack {
+    grid-column: span 2;
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--grid-gap);
+  }
+}
+
+@media (max-width: 700px) {
+  .serviceGrid,
+  .stageGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

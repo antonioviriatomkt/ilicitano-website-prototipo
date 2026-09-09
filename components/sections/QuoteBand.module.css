@@ -1,0 +1,82 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.band {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
+  align-items: center;
+  background: var(--ink);
+  color: var(--on-ink);
+  padding: clamp(1.75rem, -0.6rem + 5.2vw, 4.5rem);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* On ink the rubric and the emphasis both lift to the lighter gold; ouro-700
+ * is a paper colour and goes muddy here. */
+.eyebrow {
+  color: var(--ouro);
+}
+
+.title {
+  color: var(--on-ink);
+}
+
+.title em {
+  color: var(--ouro);
+}
+
+.lead {
+  font-size: var(--size-prose);
+  color: #c9cbd1;
+  max-width: 44ch;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  align-self: flex-start;
+  font-size: var(--size-prose);
+}
+
+.contactLink:hover {
+  color: var(--ouro);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--white);
+  color: var(--ink);
+  padding: clamp(1.25rem, -0.2rem + 3.2vw, 2.5rem);
+}
+
+.submit {
+  margin-top: var(--space-1);
+}
+
+.note {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .band {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}

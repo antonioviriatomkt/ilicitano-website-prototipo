@@ -1,0 +1,376 @@
+/* --- masthead ----------------------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-top: var(--space-10);
+}
+
+.masthead {
+  align-items: end;
+}
+
+.identity {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+/* The one place on the site that runs bigger than --size-display-1: a
+ * development page is the destination, and its name should land like one. */
+.title {
+  font-size: clamp(3rem, 1.3rem + 7.4vw, 5.5rem); /* 48 → 88 */
+  line-height: 1;
+}
+
+.intro {
+  font-size: clamp(1.0625rem, 0.85rem + 0.9vw, 1.375rem); /* 17 → 22 */
+  max-width: 40ch;
+}
+
+.locality {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+  text-align: right;
+}
+
+.place {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+/* --- gallery ------------------------------------------------------------ */
+
+.gallery {
+  gap: var(--space-4);
+}
+
+.galleryMain {
+  grid-column: span 8;
+}
+
+.gallerySide {
+  grid-column: span 4;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.galleryMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* --- body --------------------------------------------------------------- */
+
+.body {
+  align-items: start;
+  padding-top: var(--space-section-sm);
+}
+
+.main {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-sm);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.blockHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-8);
+}
+
+.blockTitle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding-block: var(--space-8);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-12);
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.tick {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+/* --- price table -------------------------------------------------------- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding-block: var(--space-3);
+  border-bottom: var(--border);
+}
+
+.table thead th {
+  font-size: var(--size-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border-bottom-color: var(--ink);
+}
+
+.table tbody th,
+.table tbody td {
+  padding-block: var(--space-5);
+  font-size: var(--size-prose);
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.typology {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.625rem;
+  letter-spacing: -0.02em;
+  color: var(--ink) !important;
+}
+
+.planCell {
+  text-align: right;
+}
+
+/* --- proximity ---------------------------------------------------------- */
+
+.proximity {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.proximityList {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border);
+}
+
+.proximityList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: var(--border);
+  font-size: 0.9375rem;
+}
+
+.proximityPlace {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* The list is compact enough that the map would come out squat beside it; a
+ * map needs enough area to read as one. */
+.map {
+  min-height: 360px;
+}
+
+/* --- sticky enquiry card ------------------------------------------------ */
+
+.aside {
+  grid-column: 9 / span 4;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background: var(--white);
+  border: var(--border);
+  padding: clamp(1.5rem, 0.6rem + 2vw, 2.25rem);
+  /* Follows the reader down the long left column. Clears the sticky header,
+   * which is --header-height-compact once the page has been scrolled at all. */
+  position: sticky;
+  top: calc(var(--header-height-compact) + var(--space-6));
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.form > :last-child {
+  margin-top: var(--space-2);
+}
+
+.cardContact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: var(--border);
+  padding-top: var(--space-5);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  align-self: flex-start;
+  font-size: 0.9375rem;
+}
+
+.contactLink:hover {
+  color: var(--ouro-700);
+}
+
+/* --- related ------------------------------------------------------------ */
+
+.related {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-block: var(--space-section) var(--space-section);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* --- breakpoints -------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .locality {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .gallerySide {
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proximity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .blockHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  /* Sticky is a desktop affordance; on a phone the card is just the next
+   * thing down the page. */
+  .card {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .features {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .specs {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The table becomes a stack of rows: the header row is dropped and each
+   * cell carries its own label, which is the only way four columns of data
+   * stay readable at this width. */
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    padding-block: var(--space-4);
+    border-bottom: var(--border);
+  }
+
+  .table tbody th,
+  .table tbody td {
+    padding-block: var(--space-1);
+    border: 0;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label) " · ";
+    color: var(--ink-3);
+  }
+
+  .planCell {
+    text-align: left;
+    padding-top: var(--space-3) !important;
+  }
+}
